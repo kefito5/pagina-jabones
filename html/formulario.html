@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piel Seca - Productos</title>
+    <link rel="shortcut icon" href=../img/logo.jpeg type="image/x-icon" />
+    <style>
+      @font-face {
+        font-family: "Melodrama";
+        src: url("../fonts/Melodrama-Regular.woff2") format("woff2"),
+          url("../fonts/Melodrama-Regular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Melodrama";
+        src: url("../fonts/Melodrama-Bold.woff2") format("woff2"),
+          url("../fonts/Melodrama-Bold.woff") format("woff");
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color-primario: #2c5f2d;
+        --color-secundario: #97bc62;
+        --color-acento: #f4a261;
+        --color-neutro: #f8f9fa;
+        --color-texto: #2d3436;
+        --color-texto-claro: #636e72;
+        --color-blanco: #ffffff;
+        --color-sombra: rgba(0, 0, 0, 0.1);
+        --color-sombra-hover: rgba(0, 0, 0, 0.2);
+
+        --fuente-principal: "Melodrama", serif;
+        --fuente-titulo: "Playfair Display", Georgia, serif;
+
+        --espaciado-xs: 0.5rem;
+        --espaciado-sm: 1rem;
+        --espaciado-md: 2rem;
+        --espaciado-lg: 3rem;
+        --espaciado-xl: 4rem;
+
+        --transicion-rapida: 0.3s ease;
+        --transicion-suave: 0.5s ease;
+
+        --border-radius: 12px;
+        --border-radius-sm: 8px;
+        --border-radius-lg: 20px;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: var(--fuente-principal);
+        line-height: 1.6;
+        color: var(--color-texto);
+        background-color: var(--color-neutro);
+        overflow-x: hidden;
+        min-height: 100vh;
+        padding-top: 80px;
+        cursor: url("../icon/cursornorma.png") 16 16, auto;
+      }
+
+      a,
+      button {
+        cursor: url("../icon/cursorlink.png ") 16 16, pointer;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(44, 95, 45, 0.1);
+        padding: 1rem 0;
+        transition: all var(--transicion-rapida);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--espaciado-md);
+      }
+
+      header:hover {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 20px var(--color-sombra);
+      }
+
+      #logo img {
+        height: 50px;
+        width: auto;
+      }
+
+      #menu-toggle {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--color-primario);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: var(--border-radius-sm);
+        transition: all var(--transicion-rapida);
+      }
+
+      #menu-toggle:hover {
+        background: rgba(44, 95, 45, 0.1);
+      }
+
+      #menu-desplegable {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--color-blanco);
+        box-shadow: 0 8px 30px var(--color-sombra);
+        border-radius: var(--border-radius);
+        padding: var(--espaciado-sm);
+        transform: translateY(-10px) scale(0.95);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transicion-rapida);
+        min-width: 200px;
+      }
+
+      #menu-desplegable.activo {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      #menu-desplegable ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--espaciado-xs);
+      }
+
+      #menu-desplegable a {
+        color: var(--color-texto);
+        text-decoration: none;
+        padding: 0.75rem var(--espaciado-sm);
+        border-radius: var(--border-radius-sm);
+        transition: all var(--transicion-rapida);
+        font-weight: 500;
+      }
+
+      #menu-desplegable a:hover {
+        background: var(--color-secundario);
+        color: var(--color-blanco);
+        transform: translateX(5px);
+      }
+
+      #productos-piel {
+        padding: var(--espaciado-xl) var(--espaciado-md);
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      #productos-piel h2 {
+        font-family: var(--fuente-titulo);
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        color: var(--color-primario);
+        margin-bottom: var(--espaciado-lg);
+        position: relative;
+      }
+
+      #productos-piel h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(
+          135deg,
+          var(--color-acento),
+          var(--color-secundario)
+        );
+        border-radius: 2px;
+      }
+
+      .opciones-producto {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--espaciado-lg);
+        margin-bottom: var(--espaciado-lg);
+      }
+
+      .producto-card {
+        background: var(--color-blanco);
+        border-radius: var(--border-radius);
+        padding: var(--espaciado-lg);
+        box-shadow: 0 4px 20px var(--color-sombra);
+        transition: all var(--transicion-rapida);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .producto-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .producto-card:hover::before {
+        left: 100%;
+      }
+
+      .producto-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px var(--color-sombra-hover);
+      }
+
+      .producto-card img {
+        width: 100%;
+        max-width: 200px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: var(--border-radius-sm);
+        margin-bottom: var(--espaciado-sm);
+      }
+
+      .producto-card h3 {
+        font-family: var(--fuente-titulo);
+        font-size: 1.5rem;
+        color: var(--color-primario);
+        margin-bottom: var(--espaciado-sm);
+      }
+
+      .producto-card p {
+        color: var(--color-texto-claro);
+        margin-bottom: var(--espaciado-sm);
+        font-size: 1rem;
+      }
+
+      .btn-elegir {
+        background: linear-gradient(135deg, var(--color-acento), #e76f51);
+        color: var(--color-blanco);
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all var(--transicion-rapida);
+        box-shadow: 0 4px 15px rgba(244, 162, 97, 0.4);
+      }
+
+      .btn-elegir:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(244, 162, 97, 0.6);
+      }
+
+      #form-recomendacion {
+        padding: var(--espaciado-xl) var(--espaciado-md);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      #form-recomendacion h2 {
+        font-family: var(--fuente-titulo);
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        color: var(--color-primario);
+        text-align: center;
+        margin-bottom: var(--espaciado-lg);
+        position: relative;
+      }
+
+      #form-recomendacion h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(
+          135deg,
+          var(--color-acento),
+          var(--color-secundario)
+        );
+        border-radius: 2px;
+      }
+
+      form {
+        background: var(--color-blanco);
+        border-radius: var(--border-radius);
+        padding: var(--espaciado-lg);
+        box-shadow: 0 8px 30px var(--color-sombra);
+        display: flex;
+        flex-direction: column;
+        gap: var(--espaciado-sm);
+      }
+
+      form label {
+        font-weight: 600;
+        color: var(--color-primario);
+        margin-bottom: 0.25rem;
+        display: block;
+      }
+
+      form input[type="text"],
+      form select {
+        padding: 0.75rem var(--espaciado-sm);
+        border: 2px solid rgba(44, 95, 45, 0.2);
+        border-radius: var(--border-radius-sm);
+        font-size: 1rem;
+        transition: all var(--transicion-rapida);
+        background: var(--color-neutro);
+      }
+
+      form input[type="text"]:focus,
+      form select:focus {
+        outline: none;
+        border-color: var(--color-secundario);
+        box-shadow: 0 0 0 3px rgba(151, 188, 98, 0.2);
+      }
+
+      .checkbox-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: var(--espaciado-sm);
+        margin-top: 0.5rem;
+      }
+
+      .checkbox-group label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: normal;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: var(--border-radius-sm);
+        transition: all var(--transicion-rapida);
+      }
+
+      .checkbox-group label:hover {
+        background: rgba(151, 188, 98, 0.1);
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--color-secundario);
+      }
+
+      form button[type="submit"] {
+        background: linear-gradient(
+          135deg,
+          var(--color-primario),
+          var(--color-secundario)
+        );
+        color: var(--color-blanco);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all var(--transicion-rapida);
+        box-shadow: 0 4px 15px rgba(44, 95, 45, 0.4);
+        margin-top: var(--espaciado-sm);
+      }
+
+      form button[type="submit"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(44, 95, 45, 0.6);
+      }
+
+      .volver,
+      .atras {
+        text-align: center;
+        margin-top: var(--espaciado-lg);
+      }
+
+      #volver {
+        background: transparent;
+        color: var(--color-primario);
+        border: 2px solid var(--color-primario);
+        padding: 0.75rem 2rem;
+        border-radius: var(--border-radius);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all var(--transicion-rapida);
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      #volver:hover {
+        background: var(--color-primario);
+        color: var(--color-blanco);
+        transform: translateY(-2px);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --espaciado-md: 1rem;
+          --espaciado-lg: 2rem;
+          --espaciado-xl: 3rem;
+        }
+
+        header {
+          flex-direction: column;
+          gap: var(--espaciado-sm);
+          padding: var(--espaciado-sm);
+        }
+
+        .opciones-producto {
+          grid-template-columns: 1fr;
+        }
+
+        .checkbox-group {
+          grid-template-columns: 1fr;
+        }
+
+        #menu-desplegable {
+          right: var(--espaciado-sm);
+          left: var(--espaciado-sm);
+          width: auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding-top: 120px;
+        }
+
+        #form-recomendacion,
+        #productos-piel {
+          padding: var(--espaciado-md) var(--espaciado-sm);
+        }
+
+        form {
+          padding: var(--espaciado-md);
+        }
+      }
+
+      .producto-card {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .producto-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      #form-recomendacion {
+        animation: fadeInUp 0.6s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="encabezado">
+      <div id="logo">
+        <a href="../index.html">
+          <img src="../img/logo.jpeg" alt="Logo ELVÉ" />
+        </a>
+      </div>
+      <button id="menu-toggle" aria-label="Abrir menú">
+        <span class="icono-menu">☰</span>
+      </button>
+      <nav id="menu-desplegable">
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="formulario.html">Recomendación personalizada</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="productos-piel">
+      <h2>Elige tu tipo de producto</h2>
+      <div class="opciones-producto">
+        <div class="producto-card" data-producto="jabón">
+          <img src="../img/jabonesportada.png" alt="Jabones" />
+          <h3>Jabones</h3>
+          <p>Descubre nuestra línea de jabones artesanales.</p>
+          <button class="btn-elegir">Elegir</button>
+        </div>
+
+        <div class="producto-card" data-producto="shampoo">
+          <img src="../img/shamposportada.png" alt="Shampoo" />
+          <h3>Shampoo</h3>
+          <p>Shampoos naturales que cuidan tu cabello.</p>
+          <button class="btn-elegir">Elegir</button>
+        </div>
+      </div>
+      <div class="volver">
+        <button id="volver" onclick="location.href='../index.html'">
+          Volver al inicio
+        </button>
+      </div>
+    </section>
+
+    <section id="form-recomendacion" style="display: none">
+      <h2>Recibe tu recomendación personalizada</h2>
+      <form id="recomendacionForm">
+        <input type="hidden" id="productoSeleccionado" name="producto" />
+
+        <label for="nombre">Tu nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Ej. María"
+          required
+        />
+
+        <label for="tipoCaracteristica" id="labelCaracteristica"
+          >Tu tipo de piel:</label
+        >
+        <select id="tipoCaracteristica" name="tipoCaracteristica" required>
+          <option value="">-- Selecciona --</option>
+        </select>
+
+        <label id="labelObjetivo">Objetivo principal:</label>
+        <div class="checkbox-group" id="objetivosContainer"></div>
+
+        <label for="contacto">Tu WhatsApp</label>
+        <input
+          type="text"
+          id="contacto"
+          name="contacto"
+          placeholder="Ej. 8888-8888"
+          required
+        />
+
+        <button type="submit">Obtener recomendación</button>
+      </form>
+      <div class="atras">
+        <button id="volver" onclick="location.href='../html/formulario.html'">
+          Volver
+        </button>
+      </div>
+    </section>
+
+    <script>
+      const numeroWhatsApp = "50684011214";
+
+      function createFloatingParticles() {
+        const particlesContainer = document.createElement("div");
+        particlesContainer.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 1;
+          overflow: hidden;
+        `;
+        document.body.appendChild(particlesContainer);
+
+        for (let i = 0; i < 15; i++) {
+          const particle = document.createElement("div");
+          particle.style.cssText = `
+            position: absolute;
+            width: ${Math.random() * 8 + 4}px;
+            height: ${Math.random() * 8 + 4}px;
+            background: linear-gradient(45deg, #97bc62, #2c5f2d, #f4a261);
+            border-radius: 50%;
+            animation: float${i} ${
+            15 + Math.random() * 20
+          }s infinite ease-in-out;
+            opacity: 0.6;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+          `;
+
+          const keyframes = `
+            @keyframes float${i} {
+              0%, 100% { transform: translateY(0px) rotate(0deg); }
+              25% { transform: translateY(-${
+                20 + Math.random() * 40
+              }px) rotate(90deg); }
+              50% { transform: translateY(${
+                20 + Math.random() * 40
+              }px) rotate(180deg); }
+              75% { transform: translateY(-${
+                10 + Math.random() * 30
+              }px) rotate(270deg); }
+            }
+          `;
+
+          if (!document.querySelector(`style[data-particle="${i}"]`)) {
+            const style = document.createElement("style");
+            style.setAttribute("data-particle", i);
+            style.textContent = keyframes;
+            document.head.appendChild(style);
+          }
+
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      function createMagicCursor() {
+        const cursor = document.createElement("div");
+        cursor.style.cssText = `
+          position: fixed;
+          width: 20px;
+          height: 20px;
+          background: radial-gradient(circle, #f4a261, transparent);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9999;
+          mix-blend-mode: difference;
+          transition: transform 0.1s ease;
+        `;
+        document.body.appendChild(cursor);
+
+        document.addEventListener("mousemove", (e) => {
+          cursor.style.left = e.clientX - 10 + "px";
+          cursor.style.top = e.clientY - 10 + "px";
+        });
+
+        document.addEventListener("mousedown", () => {
+          cursor.style.transform = "scale(1.5)";
+          cursor.style.background =
+            "radial-gradient(circle, #97bc62, transparent)";
+        });
+
+        document.addEventListener("mouseup", () => {
+          cursor.style.transform = "scale(1)";
+          cursor.style.background =
+            "radial-gradient(circle, #f4a261, transparent)";
+        });
+      }
+
+      function createConfetti(x, y) {
+        const colors = ["#2c5f2d", "#97bc62", "#f4a261", "#ffffff"];
+        for (let i = 0; i < 20; i++) {
+          const confetti = document.createElement("div");
+          confetti.style.cssText = `
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            left: ${x}px;
+            top: ${y}px;
+            pointer-events: none;
+            z-index: 9998;
+            border-radius: 50%;
+          `;
+
+          const angle = (Math.PI * 2 * i) / 20;
+          const velocity = 100 + Math.random() * 100;
+          const gravity = 0.8;
+          let vx = Math.cos(angle) * velocity;
+          let vy = Math.sin(angle) * velocity;
+
+          document.body.appendChild(confetti);
+
+          function animate() {
+            vy += gravity;
+            confetti.style.left =
+              parseFloat(confetti.style.left) + vx * 0.02 + "px";
+            confetti.style.top =
+              parseFloat(confetti.style.top) + vy * 0.02 + "px";
+            confetti.style.opacity =
+              parseFloat(confetti.style.opacity || 1) - 0.02;
+
+            if (parseFloat(confetti.style.opacity) > 0) {
+              requestAnimationFrame(animate);
+            } else {
+              confetti.remove();
+            }
+          }
+          animate();
+        }
+      }
+
+      function typeWriter(element, text, speed = 100) {
+        element.innerHTML = "";
+        let i = 0;
+        const cursor = document.createElement("span");
+        cursor.innerHTML = "|";
+        cursor.style.animation = "blink 1s infinite";
+        element.appendChild(cursor);
+
+        function type() {
+          if (i < text.length) {
+            element.insertBefore(
+              document.createTextNode(text.charAt(i)),
+              cursor
+            );
+            i++;
+            setTimeout(type, speed);
+          } else {
+            setTimeout(() => cursor.remove(), 2000);
+          }
+        }
+        type();
+      }
+
+      function animateOnScroll() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.transform = "translateY(0) scale(1)";
+                entry.target.style.opacity = "1";
+
+                if (entry.target.classList.contains("producto-card")) {
+                  setTimeout(() => {
+                    entry.target.style.boxShadow =
+                      "0 0 50px rgba(151, 188, 98, 0.5)";
+                    setTimeout(() => {
+                      entry.target.style.boxShadow =
+                        "0 8px 30px var(--color-sombra-hover)";
+                    }, 1000);
+                  }, 200);
+                }
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        document.querySelectorAll(".producto-card, form").forEach((el) => {
+          el.style.transform = "translateY(50px) scale(0.9)";
+          el.style.opacity = "0";
+          el.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
+          observer.observe(el);
+        });
+      }
+
+      function playFeedback() {
+        if (navigator.vibrate) {
+          navigator.vibrate([50, 30, 50]);
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        createFloatingParticles();
+        createMagicCursor();
+        animateOnScroll();
+
+        const titles = document.querySelectorAll("h2");
+        titles.forEach((title, index) => {
+          const originalText = title.textContent;
+          setTimeout(() => {
+            typeWriter(title, originalText, 80);
+          }, index * 1000);
+        });
+
+        const blinkStyle = document.createElement("style");
+        blinkStyle.textContent = `
+          @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+          }
+        `;
+        document.head.appendChild(blinkStyle);
+      });
+
+      const productosConfig = {
+        jabón: {
+          titulo: "Recibe tu recomendación de jabón personalizada",
+          labelCaracteristica: "Tu tipo de piel:",
+          opciones: ["Piel Seca", "Piel Grasa", "Piel Mixta", "Piel Sensible"],
+          objetivos: ["Hidratar", "Nutrir", "Reparar", "Exfoliar", "Suavizar"],
+        },
+        shampoo: {
+          titulo: "Recibe tu recomendación de shampoo personalizada",
+          labelCaracteristica: "Tu tipo de cabello:",
+          opciones: [
+            "Cabello Graso",
+            "Cabello Seco",
+            "Cabello Mixto",
+            "Cabello Rizado",
+            "Cabello Teñido",
+            "Cabello con Caspa",
+          ],
+          objetivos: [
+            "Hidratar",
+            "Fortalecer",
+            "Dar Brillo",
+            "Controlar Grasa",
+            "Reparar Daños",
+            "Eliminar Caspa",
+          ],
+        },
+      };
+
+      function actualizarFormulario(tipoProducto) {
+        const config = productosConfig[tipoProducto];
+        if (!config) return;
+
+        const titulo = document.querySelector("#form-recomendacion h2");
+        typeWriter(titulo, config.titulo, 60);
+
+        const labelCaracteristica = document.getElementById(
+          "labelCaracteristica"
+        );
+        const selectCaracteristica =
+          document.getElementById("tipoCaracteristica");
+
+        labelCaracteristica.textContent = config.labelCaracteristica;
+
+        selectCaracteristica.innerHTML =
+          '<option value="">-- Selecciona --</option>';
+
+        config.opciones.forEach((opcion, index) => {
+          setTimeout(() => {
+            const option = document.createElement("option");
+            option.value = opcion;
+            option.textContent = opcion;
+            selectCaracteristica.appendChild(option);
+
+            option.style.opacity = "0";
+            setTimeout(() => {
+              option.style.opacity = "1";
+              option.style.transition = "opacity 0.3s ease";
+            }, 10);
+          }, index * 100);
+        });
+
+        const objetivosContainer =
+          document.getElementById("objetivosContainer");
+        objetivosContainer.innerHTML = "";
+
+        config.objetivos.forEach((objetivo, index) => {
+          setTimeout(() => {
+            const label = document.createElement("label");
+            const input = document.createElement("input");
+            input.type = "checkbox";
+            input.name = "objetivo";
+            input.value = objetivo;
+
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(objetivo));
+            objetivosContainer.appendChild(label);
+
+            label.style.transform = "translateX(-20px)";
+            label.style.opacity = "0";
+            setTimeout(() => {
+              label.style.transform = "translateX(0)";
+              label.style.opacity = "1";
+              label.style.transition = "all 0.3s ease";
+            }, 10);
+
+            input.addEventListener("focus", (e) => {
+              e.target.parentElement.style.transform = "scale(1.02)";
+              e.target.parentElement.style.background =
+                "rgba(151, 188, 98, 0.1)";
+            });
+
+            input.addEventListener("blur", (e) => {
+              e.target.parentElement.style.transform = "scale(1)";
+              e.target.parentElement.style.background = "transparent";
+            });
+
+            input.addEventListener("change", () => {
+              if (navigator.vibrate) {
+                navigator.vibrate(30);
+              }
+            });
+          }, index * 80);
+        });
+      }
+
+      document.getElementById("menu-toggle").addEventListener("click", (e) => {
+        document.getElementById("menu-desplegable").classList.toggle("activo");
+        createConfetti(e.clientX, e.clientY);
+        playFeedback();
+      });
+
+      document.querySelectorAll(".btn-elegir").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const producto = e.target.closest(".producto-card").dataset.producto;
+          document.getElementById("productoSeleccionado").value = producto;
+
+          createConfetti(e.clientX, e.clientY);
+          playFeedback();
+
+          const productosSection = document.getElementById("productos-piel");
+          const formSection = document.getElementById("form-recomendacion");
+
+          productosSection.style.transform = "scale(0.8) rotateY(-90deg)";
+          productosSection.style.opacity = "0";
+
+          setTimeout(() => {
+            productosSection.style.display = "none";
+            formSection.style.display = "block";
+            formSection.style.transform = "scale(0.8) rotateY(90deg)";
+            formSection.style.opacity = "0";
+
+            actualizarFormulario(producto);
+
+            setTimeout(() => {
+              formSection.style.transform = "scale(1) rotateY(0deg)";
+              formSection.style.opacity = "1";
+            }, 100);
+          }, 300);
+        });
+
+        btn.addEventListener("mouseenter", (e) => {
+          e.target.style.transform = "translateY(-2px) scale(1.05)";
+          e.target.style.boxShadow = "0 12px 35px rgba(244, 162, 97, 0.7)";
+        });
+
+        btn.addEventListener("mouseleave", (e) => {
+          e.target.style.transform = "translateY(-2px) scale(1)";
+          e.target.style.boxShadow = "0 8px 25px rgba(244, 162, 97, 0.6)";
+        });
+      });
+
+      document
+        .getElementById("recomendacionForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const nombre = document.getElementById("nombre").value;
+          const producto = document.getElementById(
+            "productoSeleccionado"
+          ).value;
+          const tipoCaracteristica =
+            document.getElementById("tipoCaracteristica").value;
+          const objetivos = [
+            ...document.querySelectorAll('input[name="objetivo"]:checked'),
+          ].map((el) => el.value);
+          const contacto = document.getElementById("contacto").value;
+
+          const caracteristicaLabel =
+            producto === "shampoo" ? "Tipo de cabello" : "Tipo de piel";
+
+          const mensaje = `
+Hola, soy ${nombre}.
+Quiero información sobre: ${producto}.
+${caracteristicaLabel}: ${tipoCaracteristica}.
+Objetivos: ${objetivos.join(", ") || "No especificado"}.
+Mi contacto: ${contacto}.
+        `.trim();
+
+          const btn = e.target.querySelector('button[type="submit"]');
+          const rect = btn.getBoundingClientRect();
+          createConfetti(
+            rect.left + rect.width / 2,
+            rect.top + rect.height / 2
+          );
+
+          btn.style.transform = "scale(0.95)";
+          btn.innerHTML = "🚀 Enviando...";
+          btn.style.background = "linear-gradient(135deg, #97bc62, #2c5f2d)";
+
+          setTimeout(() => {
+            btn.innerHTML = "✅ ¡Enviado!";
+            playFeedback();
+
+            setTimeout(() => {
+              const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(
+                mensaje
+              )}`;
+              window.open(url, "_blank");
+
+              setTimeout(() => {
+                btn.innerHTML = "Obtener recomendación";
+                btn.style.transform = "scale(1)";
+                btn.style.background =
+                  "linear-gradient(135deg, var(--color-primario), var(--color-secundario))";
+              }, 2000);
+            }, 1000);
+          }, 1000);
+        });
+
+      document.querySelectorAll("input, select").forEach((input) => {
+        input.addEventListener("focus", (e) => {
+          e.target.style.transform = "scale(1.02)";
+          e.target.style.boxShadow = "0 0 20px rgba(151, 188, 98, 0.3)";
+        });
+
+        input.addEventListener("blur", (e) => {
+          e.target.style.transform = "scale(1)";
+          e.target.style.boxShadow = "none";
+        });
+
+        input.addEventListener("input", () => {
+          if (navigator.vibrate) {
+            navigator.vibrate(20);
+          }
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        const menu = document.getElementById("menu-desplegable");
+        const toggle = document.getElementById("menu-toggle");
+
+        if (
+          !menu.contains(e.target) &&
+          !toggle.contains(e.target) &&
+          menu.classList.contains("activo")
+        ) {
+          menu.classList.remove("activo");
+          playFeedback();
+        }
+      });
+
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll(".producto-card");
+
+        parallaxElements.forEach((el, index) => {
+          const speed = 0.1 + index * 0.05;
+          el.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
+
+      let colorIndex = 0;
+      const colors = [
+        ["#2c5f2d", "#97bc62", "#f4a261"],
+        ["#6c5ce7", "#a29bfe", "#fd79a8"],
+        ["#00b894", "#55efc4", "#fdcb6e"],
+        ["#e84393", "#fd79a8", "#fdcb6e"],
+      ];
+
+      setInterval(() => {
+        colorIndex = (colorIndex + 1) % colors.length;
+        document.documentElement.style.setProperty(
+          "--color-acento-alt",
+          colors[colorIndex][2]
+        );
+      }, 10000);
+    </script>
+  </body>
+</html>

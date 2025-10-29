@@ -1,0 +1,333 @@
+:root {
+  --color-primario: #2c5f2d;
+  --color-secundario: #97bc62;
+  --color-acento: #f4a261;
+  --color-neutro: #f8f9fa;
+  --color-texto: #2d3436;
+  --color-texto-claro: #636e72;
+  --color-blanco: #ffffff;
+  --color-sombra: rgba(0, 0, 0, 0.1);
+  --color-sombra-hover: rgba(0, 0, 0, 0.15);
+  --color-overlay: rgba(44, 95, 45, 0.9);
+
+  --fuente-principal: "Poppins", sans-serif;
+  --fuente-titulo: "Playfair Display", Georgia, serif;
+
+  --espaciado-xs: 0.5rem;
+  --espaciado-sm: 1rem;
+  --espaciado-md: 2rem;
+  --espaciado-lg: 3rem;
+
+  --transicion-rapida: 0.3s ease;
+  --transicion-suave: 0.5s ease;
+
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  --border-radius-lg: 20px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background: linear-gradient(135deg, var(--color-neutro) 0%, #e9ecef 100%);
+  min-height: 100vh;
+  color: var(--color-texto);
+  padding-top: 100px;
+}
+a,
+button {
+  cursor: url("../icon/cursorlink.png ") 16 16, pointer;
+}
+
+#encabezado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(44, 95, 45, 0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all var(--transicion-rapida);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+#encabezado:hover {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 8px 30px var(--color-sombra);
+}
+
+#logo img {
+  height: 60px;
+  max-height: 10vh;
+  transition: transform var(--transicion-rapida),
+    filter var(--transicion-rapida), box-shadow var(--transicion-rapida);
+  border-radius: var(--border-radius);
+  object-fit: contain;
+}
+
+#logo img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px rgba(44, 95, 45, 0.3));
+  box-shadow: 0 8px 25px var(--color-sombra);
+}
+
+#menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transicion-rapida);
+  position: relative;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+#menu-toggle:hover {
+  background: rgba(44, 95, 45, 0.1);
+  transform: scale(1.1);
+}
+
+#menu-toggle:focus {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.icono-menu {
+  display: block;
+  font-size: 1.8rem;
+  color: var(--color-primario);
+  transition: all var(--transicion-rapida);
+  transform-origin: center;
+}
+
+#menu-toggle:hover .icono-menu {
+  color: var(--color-acento);
+  transform: rotate(90deg);
+}
+
+#menu-toggle.activo .icono-menu {
+  transform: rotate(180deg);
+  color: var(--color-acento);
+}
+
+#menu-desplegable {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem 0;
+  min-width: 250px;
+  border: 1px solid rgba(44, 95, 45, 0.1);
+  opacity: 0;
+  transform: translateY(-20px) scale(0.9);
+  transition: all var(--transicion-suave);
+  overflow: hidden;
+}
+
+#menu-desplegable.mostrar {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+#menu-desplegable::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(151, 188, 98, 0.1),
+    transparent
+  );
+  transition: left 1s ease;
+}
+
+#menu-desplegable.mostrar::before {
+  left: 100%;
+}
+
+#menu-desplegable ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu-desplegable li {
+  margin: 0;
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideInRight 0.4s ease forwards;
+}
+
+#menu-desplegable li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+#menu-desplegable li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+#menu-desplegable li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+#menu-desplegable li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+#menu-desplegable a {
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: var(--color-texto);
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: all var(--transicion-rapida);
+  position: relative;
+  overflow: hidden;
+}
+
+#menu-desplegable a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(44, 95, 45, 0.05),
+    rgba(151, 188, 98, 0.1)
+  );
+  transition: left var(--transicion-suave);
+}
+
+#menu-desplegable a:hover::before {
+  left: 0;
+}
+
+#menu-desplegable a:hover {
+  color: var(--color-primario);
+  padding-left: 2.5rem;
+  background: rgba(44, 95, 45, 0.05);
+}
+
+#menu-desplegable a.activo {
+  color: var(--color-primario);
+  background: rgba(151, 188, 98, 0.1);
+  border-left: 4px solid var(--color-acento);
+  padding-left: 2rem;
+}
+
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-overlay);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity var(--transicion-suave);
+}
+
+.menu-overlay.activo {
+  display: block;
+  opacity: 1;
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  #encabezado {
+    padding: 1rem;
+  }
+
+  #menu-desplegable {
+    right: 1rem;
+    left: 1rem;
+    min-width: auto;
+  }
+
+  .icono-menu {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #menu-desplegable {
+    right: 0.5rem;
+    left: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  #menu-desplegable a {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.contenido-demo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.contenido-demo h1 {
+  font-family: var(--fuente-titulo);
+  font-size: 3rem;
+  color: var(--color-primario);
+  margin-bottom: 1rem;
+}
+
+.contenido-demo p {
+  font-size: 1.2rem;
+  color: var(--color-texto-claro);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piel Seca - ELVÉ</title>
+    <link rel="shortcut icon" href=../img/logo.jpeg type="image/x-icon" />
+    <link rel="stylesheet" href="../css/menusproduct.css" />
+    <link rel="stylesheet" href="../css/recomend.css" />
+  </head>
+  <body>
+    <header id="encabezado">
+      <div id="logo">
+        <a href="../index.html">
+          <img src="../img/logo.jpeg" alt="Logo ELVÉ" />
+        </a>
+      </div>
+      <button id="menu-toggle" aria-label="Abrir menú">
+        <span class="icono-menu">☰</span>
+      </button>
+      <nav id="menu-desplegable">
+        <ul>
+          <li><a href="../html/catalogo.html">Volver</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <button id="btn-recomendaciones" class="btn-flotante">💡</button>
+
+    <div id="modal-recomendaciones" class="modal-recomendaciones">
+      <div class="contenido-recomendaciones">
+        <span id="close-recomendaciones" class="cerrar">❌</span>
+        <h2>Recomendaciones</h2>
+        <ul>
+          <li>Deja secar el jabón en una jabonera que drene el agua.</li>
+          <li>
+            No lo dejes en contacto directo con el agua después de usarlo.
+          </li>
+          <li>Corta el jabón en pedazos pequeños para usar uno a la vez.</li>
+          <li>
+            El shampoo sólido debe guardarse en un lugar fresco y ventilado.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section id="categorias-piel">
+      <h2>Elige tu producto</h2>
+      <div class="categorias-container">
+        <div class="categoria" data-tipo="jabones">
+          <a href="../html/pielgrasa.html">
+            <img src="../img/jabonesportada.png" alt="Jabones" />
+            <h3>Jabones</h3>
+          </a>
+        </div>
+        <div class="categoria" data-tipo="shampoo">
+          <a href="../html/shanpielgrasa.html">
+            <img src="../img/shamposportada.png" alt="Shampoo" />
+            <h3>Shampoo</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+    <script src="../js/menus.js"></script>
+    <script src="../js/recomen.js"></script>
+  </body>
+</html>

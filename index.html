@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jabones Artesanales</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="shortcut icon" href="./img//logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/pagos.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
+    ></script>
+  </head>
+  <body>
+    <header id="encabezado">
+      <div id="logo">
+        <a href="index.html">
+          <img src="./img/logo.jpeg" alt="Logo ELVÉ" />
+        </a>
+      </div>
+
+      <button id="menu-toggle" aria-label="Abrir menú">
+        <span class="icono-menu">☰</span>
+      </button>
+
+      <nav id="menu-desplegable">
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="html/catalogo.html">Catálogo</a></li>
+          <li><a href="html/">Nosotros</a></li>
+          <li><a href="html/contacto.html">Contacto</a></li>
+          <li>
+            <a href="html/formulario.html">Recomendación personalizada</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="hero-premium">
+      <img
+        src="./img/imagenelegante.png"
+        alt="Jabón artesanal y shampoo"
+        class="hero-fondo"
+      />
+
+      <div class="hero-contenido">
+        <h2 class="hero-frase">Cuidado natural, belleza auténtica</h2>
+      </div>
+    </section>
+
+    <section id="video-portada">
+      <div class="video-mask">
+        <video id="video1" autoplay muted loop playsinline></video>
+      </div>
+
+      <div class="video-mask">
+        <video id="video2" autoplay muted loop playsinline></video>
+      </div>
+
+      <div class="contenido-portada">
+        <h1>
+          "Jabones y shampoos artesanales, formulados para el cuidado natural de
+          tu piel y cabello"
+        </h1>
+        <a href="./html/catalogo.html" class="btn-catalogo">Ver catálogo</a>
+      </div>
+    </section>
+
+    <section id="mockup-destacado">
+      <img src="./img/modelo.png" alt="Mockup de jabón artesanal" />
+    </section>
+
+    <section id="productos-3d">
+      <h2>Explora nuestros productos en 3D</h2>
+      <div
+        class="grid-3d"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 24px;
+          justify-items: center;
+        "
+      >
+        <model-viewer
+          src="./3d/jabon.glb"
+          alt="Jabón artesanal 3D"
+          camera-controls
+          auto-rotate
+          rotation-per-second="20deg"
+          shadow-intensity="1"
+          style="
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: #f7f7f7;
+          "
+        >
+        </model-viewer>
+
+        <model-viewer
+          src="./3d/shammpo.glb"
+          alt="Shampoo artesanal 3D"
+          camera-controls
+          auto-rotate
+          rotation-per-second="20deg"
+          shadow-intensity="1"
+          style="
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: #f7f7f7;
+          "
+        >
+        </model-viewer>
+      </div>
+    </section>
+
+    <a href="https://wa.me/50684011214" class="btn-wsp" target="_blank">
+      <img src="./icon/messeng.png" alt="WhatsApp" />
+    </a>
+
+    <button
+      class="btn-envios-pagos"
+      id="abrirModal"
+      aria-label="Ver envíos y métodos de pago"
+    >
+      <img src="./icon/iconsmesajes/entrega.png" alt="Envíos & Pagos" />
+    </button>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="faq-modal" id="modalContent">
+        <button class="modal-close" id="cerrarModal">&times;</button>
+
+        <div class="modal-content">
+          <h1 class="titulo-principal">Envíos & Métodos de Pago</h1>
+          <p class="intro-text">
+            Aquí encontrarás toda la información para recibir tu pedido y pagar
+            de forma segura.
+          </p>
+
+          <section class="faq-section">
+            <h2>
+              <img
+                src="./icon/iconsmesajes/icons8-tarjeta-en-uso-50.png"
+                alt="Pago"
+                class="icono"
+              />
+              Métodos de Pago
+            </h2>
+            <div class="faq-item">
+              <h3>
+                <img
+                  src="./icon/iconsmesajes/telefono.png"
+                  alt="Simple"
+                  class="icono"
+                />
+                Transferencia Simple
+              </h3>
+              <p>
+                Podés pagar con transferencia mediante SIMPE.
+                <strong>Número de cuenta:</strong>
+                <em>(lo agregás aquí cuando lo tengas)</em>
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>
+                <img
+                  src="./icon/iconsmesajes/efectivo.png"
+                  alt="Efectivo"
+                  class="icono"
+                />
+                Pago en efectivo
+              </h3>
+              <p>
+                Pagá directamente al recibir tu pedido en una entrega personal.
+              </p>
+            </div>
+          </section>
+
+          <section class="faq-section">
+            <h2>
+              <img
+                src="./icon/iconsmesajes/carga.png"
+                alt="Envío"
+                class="icono"
+              />
+              Formas de Entrega
+            </h2>
+            <div class="faq-item">
+              <h3>
+                <img
+                  src="./icon/iconsmesajes/pedido.png"
+                  alt="Correos"
+                  class="icono"
+                />
+                Correos de Costa Rica
+              </h3>
+              <p>
+                Recibí tu pedido en la comodidad de tu hogar mediante Correos de
+                Costa Rica.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>
+                <img
+                  src="./icon/iconsmesajes/persona.png"
+                  alt="Persona"
+                  class="icono"
+                />
+                Entrega en persona
+              </h3>
+              <p>
+                Coordinaremos contigo un punto de encuentro.
+                <strong>Nota:</strong> Te contactaremos por WhatsApp para la
+                coordinación de la entrega personal.
+              </p>
+            </div>
+          </section>
+
+          <div class="volver-container">
+            <a href="#" onclick="cerrarPagosModal()" id="salirModal">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="ingredientes">
+      <h2>Ingredientes naturales que amamos</h2>
+      <div class="ingredientes-lista">
+        <div class="ingrediente">
+          <img src="./icon/piña.png" alt="Piña" />
+          <p>Piña</p>
+        </div>
+        <div class="ingrediente">
+          <img src="./icon/aloevera.png" alt="Aloe vera" />
+          <p>Aloe vera</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios-rapidos">
+      <div class="beneficio">
+        <img src="./icon/natural.png" alt="Natural" />
+        <p>100% Natural</p>
+      </div>
+      <div class="beneficio">
+        <img src="./icon/piel.png" alt="Suave" />
+        <p>Ideal para tu piel</p>
+      </div>
+      <div class="beneficio">
+        <img src="./icon/eco.png" alt="Eco" />
+        <p>Eco-amigable</p>
+      </div>
+    </section>
+
+    <section id="nosotros-inicio">
+      <h2>¿Quiénes somos?</h2>
+      <p>
+        Somos un emprendimiento dedicado al cuidado natural de la piel y el
+        cabello. Creamos jabones artesanales con ingredientes nobles que
+        protegen tu salud y honran al planeta.
+      </p>
+      <a href="./html/nosotros.html" class="btn-ver-mas">Ver más</a>
+    </section>
+
+    <section id="cta-final">
+      <h2>
+        ¿Listo para consentir tu piel y tu cabello con ingredientes naturales?
+      </h2>
+      <a href="./html/catalogo.html" class="btn-catalogo">Explorar catálogo</a>
+    </section>
+
+    <section id="por-que-nosotros">
+      <h2>¿Por qué elegirnos?</h2>
+      <div class="razones">
+        <div class="razon">
+          <img src="./icon/certificado.png" alt="Certificado" />
+          <p>Hechos a mano con calidad</p>
+        </div>
+        <div class="razon">
+          <img src="./icon/piel.png" alt="Piel feliz" />
+          <p>Cuida todo tipo de piel</p>
+        </div>
+        <div class="razon">
+          <img src="./icon/enviar.png" alt="Envíos" />
+          <p>Envíos a todo el país</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="productos-destacados">
+      <h2>Productos destacados</h2>
+      <div class="carrusel">
+        <div class="producto">
+          <img src="./img/shampoave.jpeg" alt="Jabón de Miel y Avena" />
+          <p>shammpo de Miel y Avena</p>
+        </div>
+        <div class="producto">
+          <img src="./icon/jabon.png" alt="Jabón de Carbón Activado" />
+          <p>Jabón de Carbón</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="novedades">
+      <h2>Lo más nuevo</h2>
+      <div class="novedades-lista">
+        <div class="producto nuevo">
+          <span class="etiqueta-nuevo">Nuevo</span>
+          <img src="./img/jaboncafe.jpeg" alt="Jabón de Lavanda" />
+          <p>Jabón Exfoliante de Café y Naranja</p>
+        </div>
+        <div class="producto nuevo">
+          <span class="etiqueta-nuevo">Nuevo</span>
+          <img src="../img/carbonactive.jpg" alt="Jabón de Mango" />
+          <p>Jabón de Carbón Activado</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonio">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <blockquote>
+        “Desde que uso sus jabones mi piel cambió totalmente, ya no tengo
+        resequedad y huelen delicioso.”
+        <cite>— Valeria G.</cite>
+      </blockquote>
+    </section>
+
+    <section id="tipo-piel">
+      <h2>¿No sabes tu tipo de piel y cabello?</h2>
+      <p>Descubre cuál es y elegí el jabón ideal para vos.</p>
+      <a href="./html/catalogo.html" class="btn-ver-mas">Descúbrelo</a>
+    </section>
+
+    <div id="modal-video" class="modal">
+      <div class="modal-contenido">
+        <span id="close-video">&times;</span>
+        <video id="video-frame" controls>
+          <source src="./video/videoexplica.mp4" type="video/mp4" />
+          Tu navegador no soporta videos HTML5.
+        </video>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 ELVÉ. Todos los derechos reservados.</p>
+    </footer>
+    <script src="index.js" defer></script>
+    <script src="./js/menu.js"></script>
+
+    <script>
+      const btnVideo = document.getElementById("btn-video");
+      const modalVideo = document.getElementById("modal-video");
+      const closeVideo = document.getElementById("close-video");
+      const videoFrame = document.getElementById("video-frame");
+
+      btnVideo.addEventListener("click", () => {
+        modalVideo.style.display = "flex";
+        videoFrame.play();
+      });
+
+      function cerrarVideoModal() {
+        modalVideo.style.display = "none";
+        videoFrame.pause();
+        videoFrame.currentTime = 0;
+      }
+
+      closeVideo.addEventListener("click", cerrarVideoModal);
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modalVideo) {
+          cerrarVideoModal();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (modalVideo.style.display === "flex") {
+          cerrarVideoModal();
+        }
+      });
+
+      const videos = ["./video/video.mp4", "./video/videoshampo.mp4"];
+
+      let current = 0;
+      const video1 = document.getElementById("video1");
+      const video2 = document.getElementById("video2");
+
+      video1.src = videos[0];
+      video1.classList.add("active");
+
+      function cambiarVideo() {
+        current = (current + 1) % videos.length;
+        const nextVideo = current % 2 === 0 ? video1 : video2;
+        const currentVideo = current % 2 === 0 ? video2 : video1;
+
+        nextVideo.src = videos[current];
+        nextVideo.currentTime = 0;
+
+        nextVideo.classList.add("active");
+        nextVideo.play();
+
+        currentVideo.classList.remove("active");
+      }
+
+      setInterval(cambiarVideo, 10000);
+    </script>
+    <script src="./js/pagos.js"></script>
+  </body>
+</html>

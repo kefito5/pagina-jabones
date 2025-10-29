@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto | Jaboné</title>
+    <link rel="stylesheet" href="../css/contacto.css" />
+    <link rel="shortcut icon" href="../img/logo.jpeg" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/menu.css" />
+  </head>
+  <body>
+    <header id="encabezado">
+      <div id="logo">
+        <a href="../index.html">
+          <img src="../img/logo.jpeg" alt="Logo ELVÉ" />
+        </a>
+      </div>
+
+      <button id="menu-toggle" aria-label="Abrir menú">
+        <span class="icono-menu">☰</span>
+      </button>
+
+      <nav id="menu-desplegable">
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="formulario.html">Recomendación personalizada</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="contacto-info" class="contacto-flex">
+      <div class="contacto-texto">
+        <h1>¿Querés hacer un pedido o tenés dudas?</h1>
+        <p>
+          Podés escribirnos directamente por WhatsApp o por nuestras redes
+          sociales. ¡Estamos para ayudarte!
+        </p>
+
+        <a href="https://wa.me/50684011214" target="_blank" class="btn-wsp">
+          <img src="../icon/whatsapp.png" alt="WhatsApp" />
+          Escribir por WhatsApp
+        </a>
+      </div>
+
+      <div class="mockup-iphone">
+        <img
+          src="../img/jabonmoc.png"
+          alt="Mockup iPhone con WhatsApp abierto"
+        />
+      </div>
+    </section>
+
+    <section id="redes">
+      <h2>Seguinos en redes</h2>
+      <div class="redes-icons">
+        <a
+          href="https://www.instagram.com/elveartesanal.cr"
+          target="_blank"
+          rel="noopener"
+        >
+          <img src="../icon/instagram.png" alt="Instagram" />
+        </a>
+
+        <!-- <a href="#" target="_blank">
+          <img src="../icon/facebook.png" alt="Facebook" />
+        </a> -->
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 ELVÉ. Todos los derechos reservados.</p>
+    </footer>
+    <script src="../js/contacto.js"></script>
+    <script src="../js/menu.js"></script>
+    <script>
+      document.querySelectorAll(".redes-icons a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault(); // evita recarga
+          window.open(link.href, "_blank", "noopener");
+        });
+      });
+    </script>
+  </body>
+</html>
