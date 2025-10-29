@@ -33,7 +33,7 @@
         <ul>
           <li><a href="../index.html">Inicio</a></li>
           <li><a href="html/catalogo.html">Catálogo</a></li>
-          <li><a href="html/">Nosotros</a></li>
+          <li><a href="html/nosotros.html">Nosotros</a></li>
           <li><a href="html/contacto.html">Contacto</a></li>
           <li>
             <a href="html/formulario.html">Recomendación personalizada</a>
@@ -343,16 +343,6 @@
       <a href="./html/catalogo.html" class="btn-ver-mas">Descúbrelo</a>
     </section>
 
-    <div id="modal-video" class="modal">
-      <div class="modal-contenido">
-        <span id="close-video">&times;</span>
-        <video id="video-frame" controls>
-          <source src="./video/videoexplica.mp4" type="video/mp4" />
-          Tu navegador no soporta videos HTML5.
-        </video>
-      </div>
-    </div>
-
     <footer>
       <p>&copy; 2025 ELVÉ. Todos los derechos reservados.</p>
     </footer>
@@ -360,60 +350,47 @@
     <script src="./js/menu.js"></script>
 
     <script>
-      const btnVideo = document.getElementById("btn-video");
-      const modalVideo = document.getElementById("modal-video");
-      const closeVideo = document.getElementById("close-video");
-      const videoFrame = document.getElementById("video-frame");
+      const videos = [
+  "../video/video.mp4",  // Ruta del primer video
+  "./video/videoshampo.mp4"  // Ruta del segundo video
+];
 
-      btnVideo.addEventListener("click", () => {
-        modalVideo.style.display = "flex";
-        videoFrame.play();
-      });
+let current = 0;
+const video1 = document.getElementById("video1");
+const video2 = document.getElementById("video2");
 
-      function cerrarVideoModal() {
-        modalVideo.style.display = "none";
-        videoFrame.pause();
-        videoFrame.currentTime = 0;
-      }
+// Inicializa el primer video y agrega la clase "active"
+video1.src = videos[0];
+video1.classList.add("active");
 
-      closeVideo.addEventListener("click", cerrarVideoModal);
+// Función para cambiar los videos
+function cambiarVideo() {
+  // Actualiza el índice del video actual
+  current = (current + 1) % videos.length;
 
-      window.addEventListener("click", (e) => {
-        if (e.target === modalVideo) {
-          cerrarVideoModal();
-        }
-      });
+  // Determina qué video debe estar activo
+  const nextVideo = current % 2 === 0 ? video1 : video2;
+  const currentVideo = current % 2 === 0 ? video2 : video1;
 
-      document.addEventListener("keydown", (e) => {
-        if (modalVideo.style.display === "flex") {
-          cerrarVideoModal();
-        }
-      });
+  // Cambia la fuente del siguiente video
+  nextVideo.src = videos[current];
+  nextVideo.currentTime = 0; // Reinicia el video al principio
 
-      const videos = ["./video/video.mp4", "./video/videoshampo.mp4"];
+  // Añade la clase "active" para hacer visible el siguiente video
+  nextVideo.classList.add("active");
+  nextVideo.play(); // Reproduce el siguiente video
 
-      let current = 0;
-      const video1 = document.getElementById("video1");
-      const video2 = document.getElementById("video2");
+  // Elimina la clase "active" del video que ya no se debe mostrar
+  currentVideo.classList.remove("active");
+  currentVideo.pause(); // Pausa el video que ya no se está mostrando
 
-      video1.src = videos[0];
-      video1.classList.add("active");
+  // Debug: Para saber qué video está siendo reproducido
+  console.log(`Cambiando al video: ${videos[current]}`);
+}
 
-      function cambiarVideo() {
-        current = (current + 1) % videos.length;
-        const nextVideo = current % 2 === 0 ? video1 : video2;
-        const currentVideo = current % 2 === 0 ? video2 : video1;
+// Cambia de video cada 10 segundos
+setInterval(cambiarVideo, 10000);
 
-        nextVideo.src = videos[current];
-        nextVideo.currentTime = 0;
-
-        nextVideo.classList.add("active");
-        nextVideo.play();
-
-        currentVideo.classList.remove("active");
-      }
-
-      setInterval(cambiarVideo, 10000);
     </script>
     <script src="./js/pagos.js"></script>
   </body>
